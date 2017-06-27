@@ -21,7 +21,6 @@ public class pdfWriter
             Font.BOLD);
 
     private int type;
-    private String name = null, task = null;
     
     public pdfWriter() {
     }
@@ -29,7 +28,7 @@ public class pdfWriter
     public String getPath() {
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
-        if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {//se salvou
+        if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
             return fc.getSelectedFile().getAbsolutePath();
         } else {
             return null;

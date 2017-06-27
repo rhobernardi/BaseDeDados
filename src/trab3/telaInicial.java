@@ -78,7 +78,7 @@ public class telaInicial extends javax.swing.JFrame {
         setName("telaInicial"); // NOI18N
         setResizable(false);
 
-        botaoEditarRelacao.setText("Editar Relação");
+        botaoEditarRelacao.setText("Editar relação CONSULTA MEDICA");
         botaoEditarRelacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoEditarRelacaoActionPerformed(evt);
@@ -181,31 +181,32 @@ public class telaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoEditarRelacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditarRelacaoActionPerformed
-        //chamada para a interface do historico
-        //relacao relacao = new relacao(host, user, pass, connection);
+        editarRelacao consulta = new editarRelacao(host, user, pass, connection);
+        System.out.println("Edição");
+        consulta.setVisible(true);
     }//GEN-LAST:event_botaoEditarRelacaoActionPerformed
 
     private void botaoGerarRelatorioMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGerarRelatorioMedicoActionPerformed
-        relatorio rel = new relatorio(host, user, pass, connection, 2);
-        System.out.println("Turma");
-        rel.setVisible(true);
+        gerarRelatorio relatorio = new gerarRelatorio(host, user, pass, connection, 2);
+        System.out.println("Medico");
+        relatorio.setVisible(true);
     }//GEN-LAST:event_botaoGerarRelatorioMedicoActionPerformed
 
     private void botaoGerarRelatorioTreinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGerarRelatorioTreinosActionPerformed
-        relatorio rel = new relatorio(host, user, pass, connection, 3);
-        System.out.println("Matricula");
-        rel.setVisible(true);
+        gerarRelatorio relatorio = new gerarRelatorio(host, user, pass, connection, 3);
+        System.out.println("Consulta");
+        relatorio.setVisible(true);
     }//GEN-LAST:event_botaoGerarRelatorioTreinosActionPerformed
 
     private void botaoGerarRelatorioDoppingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGerarRelatorioDoppingActionPerformed
-        relatorio rel = new relatorio(host, user, pass, connection, 4);
-        System.out.println("Disciplina");
+        gerarRelatorio rel = new gerarRelatorio(host, user, pass, connection, 4);
+        System.out.println("Diagnostico");
         rel.setVisible(true);
     }//GEN-LAST:event_botaoGerarRelatorioDoppingActionPerformed
 
     private void botaoGerarRelatorioAtletasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGerarRelatorioAtletasActionPerformed
-        relatorio rel = new relatorio(host, user, pass, connection, 1);
-        System.out.println("Professor");
+        gerarRelatorio rel = new gerarRelatorio(host, user, pass, connection, 1);
+        System.out.println("Atleta");
         rel.setVisible(true);
     }//GEN-LAST:event_botaoGerarRelatorioAtletasActionPerformed
    
