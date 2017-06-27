@@ -31,10 +31,7 @@ public class telaInicial extends javax.swing.JFrame {
     public boolean conectar() {
         try {
             Class.forName(conexao);
-            connection = DriverManager.getConnection(
-                    host,
-                    user,
-                    pass);
+            connection = DriverManager.getConnection(host, user, pass);
             
             jtAreaDeStatus1.setText("Usuário: " + user);
             jtAreaDeStatus2.setText("Status: Online");
@@ -44,13 +41,14 @@ public class telaInicial extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             jtAreaDeStatus1.setText("Usuário: -");
             jtAreaDeStatus2.setText("Status: Offline");
-            jtAreaDeStatus3.setText("ERRO: verifique o driver do banco de dados");
             jtAreaDeStatus3.setForeground(new Color(102,169,50));
+            jtAreaDeStatus3.setText("ERRO: verifique o driver do banco de dados");
+            
         } catch (SQLException ex) {
             jtAreaDeStatus1.setText("Usuário: -");
             jtAreaDeStatus2.setText("Status: Offline");
-            jtAreaDeStatus3.setText("ERRO: verifique seu usuário e senha");
             jtAreaDeStatus3.setForeground(new Color(255,27,27));
+            jtAreaDeStatus3.setText("ERRO: verifique seu usuário e senha");
         }
         return true;
     }
