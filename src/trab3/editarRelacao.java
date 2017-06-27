@@ -218,27 +218,23 @@ final class editarRelacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
-        // TODO add your handling code here:
-        inserirTupla inserir = new inserirTupla(host, user, pass, con);
-   
+        inserirTupla inserir = new inserirTupla(host, user, pass, con); //
     }//GEN-LAST:event_inserirActionPerformed
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
+        this.dispose();  //OK
     }//GEN-LAST:event_sairActionPerformed
 
     private void alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarActionPerformed
-        // TODO add your handling code here:
+        alterarTupla alterar = new alterarTupla(host, user, pass, con);  //
     }//GEN-LAST:event_alterarActionPerformed
 
     private void removerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerActionPerformed
-        // TODO add your handling code here:
-        
+        //removerTupla remover = new removerTupla(host, user, pass, con);  //
     }//GEN-LAST:event_removerActionPerformed
 
     private void exibirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibirActionPerformed
-        exibirTabela table = new exibirTabela(host, user, pass, con);
+        exibirTabela table = new exibirTabela(host, user, pass, con); //OK
     }//GEN-LAST:event_exibirActionPerformed
 
     /**

@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.TreeSet;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +24,7 @@ public class inserirTupla extends javax.swing.JFrame {
     String input;
     JScrollPane jsp = null;
     JTable mTable;
+    String items = null;
     Connection con;
     
     public inserirTupla(String host, String user, String pass, Connection con) {
@@ -30,10 +32,11 @@ public class inserirTupla extends javax.swing.JFrame {
         this.user = user;
         this.pass = pass;
         this.con = con;
-        
+        initComponents();
+        mTable = inserirDadosConsulta(con);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         pack();
-        initComponents();
+        
         setVisible(true);
     }
     
@@ -44,11 +47,11 @@ public class inserirTupla extends javax.swing.JFrame {
     public JTable inserirDadosConsulta(Connection conexao) {
         int count = 0;
         
-        input = "SELECT * FROM Consulta";
+        input = "SELECT medico FROM Consulta";
         
         Vector columnNames = new Vector();
         Vector data = new Vector();
-
+        TreeSet<String> tree = new TreeSet<>();
         try {
             //construção da classe PreparedStatement para passagem de parâmetros
             PreparedStatement instrucao = conexao.prepareStatement(input);
@@ -68,10 +71,25 @@ public class inserirTupla extends javax.swing.JFrame {
             if (count == 0) {
                 return null;
             }
-            for (int i = 1; i <= colunas; i++) {
+            
+            this.in_CRM.removeAllItems();
+            this.in_CRM.addItem("");
+            for (int i = 2; i <= colunas; i++) {
                 // Nomes das colunas ao vetor de nomes
-                columnNames.addElement(resultados.getColumnName(i));
+                columnNames.addElement(resultados.getColumnName(i).toString());
+                tree.clear();
+                for(int j = 1; j <= resultados.getColumnCount(); j++ ) { 
+                    tree.add(resultados.getColumnName(j).toString());
+                    System.out.println(resultados.getColumnName(j));
+                    //items = resultados.getColumnName(j);
+                    //this.in_CRM.addItem(items);
+                }
+                for (String res : tree) {
+                    this.in_CRM.addItem(res);
+                }
             }
+            
+            jPanel1.updateUI();
             
             // Reposiciona ponteiro de leitura
             result = instrucao.executeQuery();
@@ -83,6 +101,7 @@ public class inserirTupla extends javax.swing.JFrame {
                 
                 for (int i = 1; i <= colunas; i++) {
                     row.addElement(result.getObject(i));
+                    System.out.println(result.getObject(1));
                 }
                 
                 // Adiciona  as tuplas no vetor de dados
@@ -175,21 +194,18 @@ public class inserirTupla extends javax.swing.JFrame {
 
         jLabel6.setText("Descrição Diagnostico");
 
-        in_diagnostico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         in_diagnostico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 in_diagnosticoActionPerformed(evt);
             }
         });
 
-        in_CRM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         in_CRM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 in_CRMActionPerformed(evt);
             }
         });
 
-        in_passaporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         in_passaporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 in_passaporteActionPerformed(evt);
@@ -269,7 +285,7 @@ public class inserirTupla extends javax.swing.JFrame {
 //            this.in_CRM.addItem(user);
 //            
 //        }
-        
+        System.out.println(this.in_CRM.getSelectedObjects());
         //this.input = "INSERT INTO CONSULTA VALUES (" + "," + "," + "," + ")";
         System.out.println("INSERT INTO CONSULTA VALUES (" + in_CRM.getName() + ",'" + in_passaporte.getName() + "','" + in_data.getText() + "','" + in_diagnostico.getName() + "')");
         
