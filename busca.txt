@@ -1,0 +1,8 @@
+
+1- Liste todos os atletas (nome, documento de identificação, nacionalidade e data de nascimento) da modalidade A, que foram atendidos pelo medico B e são treinados pelo treinador C, em que A, B e C são definidos pelo usuario.
+
+2- Liste todos os médicos que atenderam pelo menos X atletas de uma nação N, juntamente ao numero total de atletas que atenderam, em que X e N são definidos pelo usuário.
+
+3- Liste a quantidade de todos os treinos que aconteceram nos periodos matutino, vespertino e noturno, juntamente ao numero de atletas que treinaram em cada periodo.
+
+4- Identifique os treinadores com o maior numero de atletas em situação irregular devido ao doping, exibindo os resultados da razão entre o numero de atletas irregulares pelo total de atletas treinados pelo mesmo treinador.
